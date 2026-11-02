@@ -1,0 +1,26 @@
+---
+layout: runbook
+title: '#4471 · two problems, not one'
+owner: hajpson
+status: resolved
+reviewed: 2026-11-02
+signature: v1.eyJzdWIiOiIzNTU2IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM2NDQ1NDQsImV4cCI6MTc5MzczMDk0NH0.Vhd0UrqT2_1nLQxxjmJoADrvEDZ5E_rjIKE10bGvIfs
+---
+
+Since April, people have told us their bookings land on the wrong day. By 4 October the desk had
+**412 reports**, merged as one ticket. They are not one bug. The kb logic splits them into two
+problems, one per cause. The desk has now worked both.
+
+## The two causes
+
+- **#1 — Date parser flips day-first tenants' dates.** 379 reports. The shared parser reads every
+  date month first; a day-first tenant's `DD/MM/YYYY` comes out flipped.
+- **#2 — booking-v3 form hint misreads day-first tenants' dates.** 33 reports. The form prints
+  `MM/DD/YYYY` and reads the tenant's typed date that way; only the three booking-v3 tenants hit it.
+
+## Lessons
+
+- A merged ticket can hold more than one cause. Count by cause, not by subject.
+- The tenant's booking form decides which bug a report is, not the intake tag.
+
+<RenderStamp {signature} />
